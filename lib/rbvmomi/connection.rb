@@ -173,6 +173,9 @@ class Connection < TrivialSoap
     when Integer
       attrs['xsi:type'] = 'xsd:long' if expected == BasicTypes::AnyType
       xml.tag! name, o.to_s, attrs
+    when Array
+      attrs['xsi:type'] = 'xsd:array' if expected == BasicTypes::AnyType
+      xml.tag! name, o.to_s, attrs
     when Float
       attrs['xsi:type'] = 'xsd:double' if expected == BasicTypes::AnyType
       xml.tag! name, o.to_s, attrs
